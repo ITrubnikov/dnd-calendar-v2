@@ -1,6 +1,15 @@
 version: '3.5'
 
 services:
+  ui-gateway:
+    build:
+      context: ./ui-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+
   postgres:
     container_name: postgres_container
     image: postgres
