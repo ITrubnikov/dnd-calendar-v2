@@ -18,4 +18,46 @@
 # vendor/
 
 # Go workspace file
-go.work
+MVC/ui-gateway/go.work
+
+
+#React ignore
+
+
+MVC/front-ui/node_modules
+MVC/front-ui/scripts/flow/*/.flowconfig
+.flowconfig
+*~
+*.pyc
+.grunt
+_SpecRunner.html
+__benchmarks__
+MVC/front-ui/build/
+MVC/front-ui/remote-repo/
+MVC/front-ui/coverage/
+MVC/front-ui/.module-cache
+MVC/front-ui/fixtures/dom/public/react-dom.js
+MVC/front-ui/fixtures/dom/public/react.js
+MVC/front-ui/test/the-files-to-test.generated.js
+*.log*
+MVC/front-ui/chrome-user-data
+*.sublime-project
+*.sublime-workspace
+MVC/front-ui/.idea
+*.iml
+.vscode
+*.swp
+*.swo
+
+MVC/front-ui/packages/react-devtools-core/dist
+MVC/front-ui/packages/react-devtools-extensions/chrome/build
+MVC/front-ui/packages/react-devtools-extensions/chrome/*.crx
+MVC/front-ui/packages/react-devtools-extensions/chrome/*.pem
+MVC/front-ui/packages/react-devtools-extensions/firefox/build
+MVC/front-ui/packages/react-devtools-extensions/firefox/*.xpi
+MVC/front-ui/packages/react-devtools-extensions/firefox/*.pem
+MVC/front-ui/packages/react-devtools-extensions/shared/build
+MVC/front-ui/packages/react-devtools-extensions/.tempUserDataDir
+MVC/front-ui/packages/react-devtools-inline/dist
+MVC/front-ui/packages/react-devtools-shell/dist
+MVC/front-ui/packages/react-devtools-timeline/dist
