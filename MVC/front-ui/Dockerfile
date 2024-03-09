@@ -1,5 +1,6 @@
 # Этап 1: Сборка приложения
 FROM node:21 AS builder
+#FROM node:21
 
 # Установите рабочую директорию в контейнере
 WORKDIR /app
@@ -15,7 +16,7 @@ COPY . .
 
 # Соберите приложение
 RUN npm run build
-
+#CMD ["npm", "start"]
 # Этап 2: Запуск с помощью Nginx
 FROM nginx:stable-alpine
 
@@ -23,7 +24,8 @@ FROM nginx:stable-alpine
 COPY --from=builder /app/build /usr/share/nginx/html
 
 # Откройте порт 80 для доступа к приложению
-EXPOSE 3000
+#EXPOSE 80
 
 # Запустите Nginx и отслуживайте содержимое
 CMD ["nginx", "-g", "daemon off;"]
+

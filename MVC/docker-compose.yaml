@@ -29,6 +29,15 @@ services:
     networks:
       - postgres
 
+  front:
+    build:
+      context: ./front-ui
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - postgres
+
   pgadmin:
     container_name: pgadmin_container
     image: dpage/pgadmin4
