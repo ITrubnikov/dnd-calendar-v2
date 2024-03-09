@@ -1,15 +1,6 @@
 version: '3.5'
 
 services:
-  ui-gateway:
-    build:
-      context: ./ui-gateway
-      dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
-    environment:
-      - PORT=8080
-
   postgres:
     container_name: postgres_container
     image: postgres
@@ -20,10 +11,23 @@ services:
     volumes:
       - postgres:/data/postgres
     ports:
-      - "5435:5432"
+      - "5432:5432"
     networks:
       - postgres
     restart: unless-stopped
+
+  ui-gateway:
+    build:
+      context: ./ui-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+    depends_on:
+      - postgres
+    networks:
+      - postgres
 
   pgadmin:
     container_name: pgadmin_container

@@ -73,3 +73,11 @@ ol, ul {
 .table tr:hover {
     background-color: #ddd;
 }
+
+
+.body-bg {
+    background-image: url('/public/images/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

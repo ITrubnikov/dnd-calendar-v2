@@ -35,7 +35,10 @@ function App() {
     if (!data) return <div>Загрузка...</div>;
 
     return (
+
+
         <div>
+
             <h1>Полученные данные</h1>
             {/*<pre>{JSON.stringify(data, null, 2)}</pre>*/}
             <table className="table">
@@ -63,7 +66,7 @@ function App() {
             </table>
         </div>
 
-    );
+    )
 }
 
 export default App;

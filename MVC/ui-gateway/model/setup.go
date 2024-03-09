@@ -15,8 +15,8 @@ func SetupModels() *gorm.DB {
 	viper_user := "mygouser"
 	viper_password := "mygouser"
 	viper_db := "postgres"
-	viper_host := "localhost"
-	viper_port := "5435"
+	viper_host := "postgres"
+	viper_port := "5432"
 	// https://gobyexample.com/string-formatting
 	prosgret_conname := fmt.Sprintf("host=%v port=%v user=%v dbname=%v password=%v sslmode=disable", viper_host, viper_port, viper_user, viper_db, viper_password)
 	fmt.Println("conname is\t\t", prosgret_conname)
