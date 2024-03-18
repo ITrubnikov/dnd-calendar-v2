@@ -4,6 +4,7 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
+	"log"
 	"net/http"
 	"ui-gateway/model"
 )
@@ -44,13 +45,15 @@ func FindAlbums(c *gin.Context) {
 }
 
 func DeleteAlbum(c *gin.Context) {
+
+	log.Println("попытка запуска DeleteAlbum!")
 	// Получение объекта базы данных из контекста запроса
 	db := c.MustGet("db").(*gorm.DB)
 	// Получение ID альбома из параметров запроса
 	id := c.Param("id")
 	// Выполнение операции удаления
 	// Создаем временный объект для хранения информации об удаляемом альбоме (для проверки существования)
-	var album []model.Album
+	var album model.Album
 	if err := db.Where("id = ?", id).First(&album).Error; err != nil {
 		// Если альбом с таким ID не найден, отправляем клиенту ошибку 404
 		c.JSON(http.StatusNotFound, gin.H{"error": "Album not found"})
