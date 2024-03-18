@@ -4,6 +4,7 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
+	"log"
 	"net/http"
 	"ui-gateway/model"
 )
@@ -45,6 +46,8 @@ func FindAlbums(c *gin.Context) {
 }
 
 func DeleteAlbum(c *gin.Context) {
+
+	log.Println("попытка запуска DeleteAlbum!")
 	// Получение объекта базы данных из контекста запроса
 	db := c.MustGet("db").(*gorm.DB)
 	// Получение ID альбома из параметров запроса
