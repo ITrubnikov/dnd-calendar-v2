@@ -27,6 +27,7 @@ func main() {
 	r.GET("/albums", FindAlbums)
 	r.DELETE("/albums/:id", DeleteAlbum)
 	r.POST("/albums", AddAlbum)
+	r.PUT("/albums/:id", UpdateAlbum) // ИЛИ r.PATCH("/albums/:id", handlers.UpdateAlbum)
 	r.Run()
 
 	//router := gin.Default()
@@ -90,4 +91,36 @@ func AddAlbum(c *gin.Context) {
 
 	// Возвращаем подтверждение об успешном добавлении
 	c.JSON(http.StatusCreated, gin.H{"data": newAlbum})
+}
+
+// UpdateAlbum обновляет существующий альбом в базе данных.
+func UpdateAlbum(c *gin.Context) {
+	// Получение объекта базы данных из контекста запроса
+	db := c.MustGet("db").(*gorm.DB)
+
+	// Получение ID альбома из параметров URL
+	id := c.Param("id")
+
+	// Проверяем, существует ли альбом с таким ID
+	var album model.Album
+	if err := db.Where("id = ?", id).First(&album).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Album not found"})
+		return
+	}
+
+	// Получаем обновленные данные альбома из тела запроса
+	var updatedData model.Album
+	if err := c.ShouldBindJSON(&updatedData); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	// Обновляем альбом в базе данных
+	if err := db.Model(&album).Updates(updatedData).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	// Отправляем подтверждение об успешном обновлении
+	c.JSON(http.StatusOK, gin.H{"data": album})
 }
