@@ -24,7 +24,7 @@ func SetupModels() *gorm.DB {
 	if err != nil {
 		panic("Failed to connect to database!")
 	}
-	db.AutoMigrate(&Album{})
+	db.AutoMigrate(&Character{})
 	// Initialise value
 	//m := Album{ID: "6", Title: "author1", Artist: "title1", Price: 23}
 	//db.Create(&m)
