@@ -1,8 +1,16 @@
 package model
 
-type Album struct {
-	ID     string  `json:"id"`
-	Title  string  `json:"title"`
-	Artist string  `json:"artist"`
-	Price  float64 `json:"price"`
+type Character struct {
+	ID    string  `json:"id"`
+	Name  string  `json:"name"`
+	Class string  `json:"class"`
+	Level float64 `json:"level"`
+	Mony  float64 `json:"mony"`
+}
+
+type deadCharacter struct {
+	ID    string  `json:"id"`
+	Name  string  `json:"name"`
+	Class string  `json:"cause_of_death"`
+	Level float64 `json:"level"`
 }

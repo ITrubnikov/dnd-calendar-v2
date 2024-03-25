@@ -26,7 +26,7 @@ function App() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/albums') // Укажите URL вашего API
+        fetch('http://localhost:8080/Character') // Укажите URL вашего API
             .then(response => response.json())
             .then(json => setData(json.data))
             .catch(error => console.error('Ошибка при получении данных:', error));
@@ -45,9 +45,10 @@ function App() {
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Титул</th>
-                    <th>Артист</th>
-                    <th>Цена</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Level</th>
+                    <th>Mony</th>
 
                     {/* Добавьте дополнительные заголовки столбцов здесь */}
                 </tr>
@@ -55,10 +56,10 @@ function App() {
                 <tbody>
                 {data.map(item => (
                     <tr key={item.id}>
-                        <td>{item.id}</td>
-                        <td>{item.title}</td>
-                        <td>{item.artist}</td>
-                        <td>{item.price}</td>
+                        <td>{item.name}</td>
+                        <td>{item.class}</td>
+                        <td>{item.level}</td>
+                        <td>{item.mony}</td>
                         {/* Выведите дополнительные данные здесь */}
                     </tr>
                 ))}
@@ -121,6 +122,11 @@ class Board extends React.Component {
                     {this.renderSquare(6)}
                     {this.renderSquare(7)}
                     {this.renderSquare(8)}
+                </div>
+                <div className="board-row">
+                    {this.renderSquare(9)}
+                    {this.renderSquare(10)}
+                    {this.renderSquare(11)}
                 </div>
             </div>
         );
